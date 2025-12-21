@@ -1,4 +1,6 @@
 baseURL = "https://github.com/Peppermint-lump/zerogen-lab/"
+canonifyURLs = true
+relativeURLs = false
 title = "ZeroGen Lab"
 author = "ZGL-Zhou Zhuhan"
 languageCode = "zh"
