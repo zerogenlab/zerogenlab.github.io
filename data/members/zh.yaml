@@ -1,0 +1,53 @@
+sections:
+  - title: 导师
+    people:
+      - name: 胡仁君
+        photo: /img/members/advisor.jpeg
+        desc: 青年研究员
+        link: https://hurenjun.github.io/
+# 博士生
+  - title: 博士生
+    people:
+      - name: 张洳维
+        photo: /img/members/phd1.jpg
+        desc: GUI自动测试
+        grade: 2026 级
+# 硕士生
+  - title: 硕士生
+    people:
+      - name: 周珠晗
+        photo: /img/members/master1.jpg
+        desc: LLM Long-term Memory
+        grade: 2025 级
+      - name: 刘泽源
+        photo: /img/members/master2.jpg
+        desc: 序列建模
+        grade: 2025 级
+      - name: 徐静蕾
+        photo: /img/members/master3.jpeg
+        desc: LLM Reasoning
+        grade: 2025 级
+      - name: 陈岩松
+        photo: /img/members/master4.jpg
+        desc: 大模型OCR能力评测
+        grade: 2025 级
+
+# 本科生
+  - title: 本科生
+    people:
+      - name: 李芳
+        photo: /img/members/ug1.jpg
+        desc: 上下文工程中的推理链
+        grade: 2022 级
+      - name: 闫研
+        photo: /img/members/ug2.jpg
+        desc: Efficient Context Reasoning 
+        grade: 2022 级
+      - name: 张凯诚
+        photo: /img/members/ug3.jpg
+        desc: LLM理解评估
+        grade: 2023 级
+      - name: 孙嘉
+        photo: /img/members/ug4.png
+        desc: LLM Reasoning
+        grade: 2023 级

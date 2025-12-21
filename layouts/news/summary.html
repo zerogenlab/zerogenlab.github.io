@@ -1,0 +1,16 @@
+<div class="flex gap-5 py-5 border-b border-black/5">
+  <div class="w-14 text-center shrink-0">
+    <div class="text-3xl font-700 leading-7">
+      {{ .Date.Format "02" }}
+    </div>
+    <div class="text-xs text-black/50 mt-1">
+      {{ .Date.Format "2025-09" }}
+    </div>
+  </div>
+
+  <div class="min-w-0">
+    <div class="text-lg md:text-3xl font-700 leading-7 text-black/70">
+      {{ .Title }}
+    </div>
+  </div>
+</div>

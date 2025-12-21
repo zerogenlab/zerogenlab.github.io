@@ -1,37 +1,44 @@
 <header>
-  <nav class="bg-opacity-100 px-6 py-6 max-w-screen-xl mx-auto nav-enter nav-top">
-    <div class="nav-grid-3">
+  <script defer src="{{ "js/fuse.min.js" | relURL }}"></script>
+  <script defer src="{{ "js/search.js" | relURL }}"></script>
+
+  <nav class="bg-opacity-100 px-6 py-6 mx-auto nav-enter nav-top">
+    <div class="grid cols-[auto_1fr_auto] items-center h-72px gap-3">
 
       <!-- 左：Logo + 实验室名 -->
-      <div class="flex items-center">
-        <a href="{{ .Site.BaseURL }}" class="flex items-center">
+      <div class="flex items-center h-full of-hidden">
+        <a href="{{ .Site.BaseURL }}" class="flex items-center h-full gap-3">
           <img
             alt="ZeroGen Lab"
             class="nav-logo"
             src="/logo.png">
-          <span class="text-xl font-semibold tracking-tight">
+          <span class="text-3xl font-normal tracking-tight hidden xl:block">
             {{ .Site.Title }}
           </span>
         </a>
       </div>
 
       <!-- 中：导航栏菜单（含教学下拉） -->
-      <div class="nav-center">
+      <div class="flex items-center whitespace-nowrap gap-4 lg:gap-8 justify-center">
         {{ range .Site.Menus.main }}
-          {{ if .HasChildren }}
 
-            <!-- 教学（下拉） -->
-            <div class="nav-dropdown">
-              <span class="nav-link text-xl">
+          {{ if .HasChildren }}
+            <div class="nav-dropdown
+                        {{ if eq .Identifier "research" }}nav-dropdown--research{{ end }}
+                        {{ if eq .Identifier "teaching" }}nav-dropdown--teaching{{ end }}">
+              <span class="nav-link lg:text-2xl text-lg">
                 {{ .Name }}
               </span>
 
+              <!-- 教学（下拉） -->
               <div class="nav-dropdown-menu">
                 {{ range .Children }}
-                  <a href="{{ .URL | safeURL }}"
-                     target="_blank"
-                     rel="noopener"
-                     class="nav-dropdown-item">
+                  {{ $u := .URL | safeURL }}
+                  <a href="{{ $u }}"
+                    {{ if or (hasPrefix $u "http://") (hasPrefix $u "https://") }}
+                      target="_blank" rel="noopener"
+                    {{ end }}
+                    class="nav-dropdown-item">
                     {{ .Name }}
                   </a>
                 {{ end }}
@@ -39,31 +46,84 @@
             </div>
 
           {{ else }}
-
             <!-- 普通菜单 -->
             <a href="{{ .URL | safeURL }}"
-               class="mr-8 text-xl hover:opacity-60 transition-opacity duration-200">
+               class="xl:text-2xl text-lg hover:opacity-60 transition-opacity duration-200">
               {{ .Name }}
             </a>
 
+            {{/* 语言切换 */}}
+            {{ if eq .Identifier "about" }}
+              <div class="relative inline-block ml-2 group lang-switch">
+                <button
+                  type="button"
+                  class="inline-flex items-center justify-center
+                         h-9 w-9 rounded-lg cursor-pointer
+                         text-black/70 hover:text-black hover:bg-black/5
+                         transition"
+                  aria-label="Language switcher"
+                >
+                  <i class="fas fa-globe"></i>
+                </button>
+
+                <div
+                  class="absolute right-0 mt-0 w-24 z-50 lang-dropdown
+                         bg-white ring-1 ring-black/10 shadow-lg
+                         opacity-0 translate-y-1 pointer-events-none
+                         transition duration-150
+                         group-hover:opacity-100
+                         group-hover:translate-y-0
+                         group-hover:pointer-events-auto"
+                >
+                  {{ if $.IsTranslated }}
+                    {{ range $.AllTranslations }}
+                      <a href="{{ .RelPermalink }}"
+                         class="block px-3 py-2 text-sm text-black/80 hover:bg-black/5">
+                        {{ .Language.LanguageName }}
+                      </a>
+                    {{ end }}
+                  {{ else }}
+                    {{ range $.Site.Languages }}
+                      <a href="{{ "/" | relLangURL }}"
+                         class="block px-3 py-2 text-sm text-black/80 hover:bg-black/5">
+                        {{ .LanguageName }}
+                      </a>
+                    {{ end }}
+                  {{ end }}
+                </div>
+              </div>
+            {{ end }}
+
           {{ end }}
+
         {{ end }}
       </div>
 
       <!-- 右：搜索框 -->
-      <div class="flex items-center justify-end">
-        <div class="search-wrap">
+      <div class="relative flex items-center justify-end">
+        <div class="search-wrap <lg:w-100px">
           <input
             id="siteSearch"
             type="search"
             placeholder="Search…"
-            class="search-input">
+            class="search-input"
+            data-index-url="{{ "search.json" | relLangURL }}">
+        </div>
+
+        <!-- 搜索结果容器 -->
+        <div
+          id="searchResult"
+          class="absolute right-0 top-full mt-2 w-72
+                 bg-white ring-1 ring-black/10 shadow-lg
+                 rounded-lg overflow-hidden z-50 hidden">
         </div>
       </div>
 
     </div>
   </nav>
 </header>
+
+
 
 
 

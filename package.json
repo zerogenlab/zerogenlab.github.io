@@ -9,8 +9,8 @@
   "scripts": {
     "dev": "concurrently npm:dev:*",
     "dev:css": "unocss --watch",
-    "build:css": "unocss",
     "dev:hugo": "hugo server",
+    "build:css": "unocss",
     "build": "npm run build:css && hugo --minify"
   },
   "devDependencies": {

@@ -1,0 +1,129 @@
+{{- $index := slice -}}
+{{- $seen := dict -}}
+{{- $lang := .Site.Language.Lang -}}
+
+{{/* =========================
+  1) Hugo 页面索引（独立页面标题 + 正文）
+  - 包含普通页面 + _index.md（section/list）
+  - 排除 taxonomy/term
+  - 支持 searchExclude
+========================= */}}
+{{- range .Site.Pages -}}
+  {{- if and (ne .Kind "taxonomy") (ne .Kind "term") -}}
+    {{- if and .Title .RelPermalink -}}
+      {{- if not (.Params.searchExclude | default false) -}}
+        {{- $u := .RelPermalink -}}
+        {{- if not (index $seen $u) -}}
+          {{- $seen = merge $seen (dict $u true) -}}
+          {{- $index = $index | append (dict
+            "title" .Title
+            "content" .Plain
+            "url" $u
+            "type" "page"
+          ) -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{/* =========================
+  2) Projects 数据索引：data/projects/<lang>.yaml
+  字段：name / period
+========================= */}}
+{{- $projects := index .Site.Data.projects $lang -}}
+{{- if $projects -}}
+  {{- range $p := $projects -}}
+    {{- $title := ($p.name | default "") -}}
+    {{- if $title -}}
+      {{- $content := printf "%s %s" $title ($p.period | default "") -}}
+      {{- $url := "/research/projects/" | relLangURL -}}
+      {{- $key := printf "project:%s:%s" $lang $title -}}
+      {{- if not (index $seen $key) -}}
+        {{- $seen = merge $seen (dict $key true) -}}
+        {{- $index = $index | append (dict
+          "title" $title
+          "content" $content
+          "url" $url
+          "type" "project"
+        ) -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{/* =========================
+  3) Publications 数据索引：data/publications/<lang>.yaml
+  字段：name / authors / date / link（link 不参与检索文本）
+========================= */}}
+{{- $pubs := index .Site.Data.publications $lang -}}
+{{- if $pubs -}}
+  {{- range $r := $pubs -}}
+    {{- $title := ($r.name | default "") -}}
+    {{- if $title -}}
+      {{- $content := printf "%s %s %s" $title ($r.authors | default "") ($r.date | default "") -}}
+      {{- $url := "/research/publications/" | relLangURL -}}
+      {{- $key := printf "pub:%s:%s" $lang $title -}}
+      {{- if not (index $seen $key) -}}
+        {{- $seen = merge $seen (dict $key true) -}}
+        {{- $index = $index | append (dict
+          "title" $title
+          "content" $content
+          "url" $url
+          "type" "publication"
+        ) -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{/* =========================
+  4) Members 数据索引：data/members/<lang>.yaml
+  结构：sections: [{title, people:[{name, desc, grade, link, photo, ...}]}]
+  - 只索引 title/name/desc/grade
+  - photo/link 不参与检索
+========================= */}}
+{{- $membersStore := index .Site.Data "members" -}}
+{{- if $membersStore -}}
+  {{- $membersRaw := index $membersStore $lang -}}
+  {{- if $membersRaw -}}
+    {{- $sections := index $membersRaw "sections" -}}
+    {{- if $sections -}}
+      {{- range $sec := $sections -}}
+        {{- $secTitle := (index $sec "title") | default "" -}}
+        {{- $people := index $sec "people" -}}
+        {{- if $people -}}
+          {{- range $m := $people -}}
+            {{- $name := (index $m "name") | default "" -}}
+            {{- if $name -}}
+              {{- $content := printf "%s %s %s %s"
+                  $name
+                  ($secTitle | default "")
+                  ((index $m "desc") | default "")
+                  ((index $m "grade") | default "")
+              -}}
+              {{- $url := "/members/" | relLangURL -}}
+              {{- $key := printf "member:%s:%s" $lang $name -}}
+              {{- if not (index $seen $key) -}}
+                {{- $seen = merge $seen (dict $key true) -}}
+                {{- $index = $index | append (dict
+                  "title" $name
+                  "content" $content
+                  "url" $url
+                  "type" "member"
+                ) -}}
+              {{- end -}}
+            {{- end -}}
+          {{- end -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{/* =========================
+  5) Slides：明确不索引（你 slide 数据只有 image/title）
+  这里什么都不做即可，不要把 .Site.Data.slides 追加进来就行
+========================= */}}
+
+{{- $index | jsonify -}}

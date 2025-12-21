@@ -1,0 +1,14 @@
+{{ define "main" }}
+<div class="mx-auto my-10 max-w-6xl">
+  <div class="mx-3 px-2">
+    <h1 class="title text-5xl mb-4">{{ .Title }}</h1>
+    {{ with .Content }}<div class="content py-1">{{ . }}</div>{{ end }}
+
+    <div class="mt-6">
+      {{ range .Pages.ByDate.Reverse }}
+        {{ .Render "summary" }}
+      {{ end }}
+    </div>
+  </div>
+</div>
+{{ end }}

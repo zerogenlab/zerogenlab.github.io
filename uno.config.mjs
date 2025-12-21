@@ -11,10 +11,10 @@ export default defineConfig({
         entry: [
             {
                 patterns: [
-                    "themes/tella/layouts/**/*.{html,js}",
-                    "themes/tella/content/**/*.{md,html}",
-                    "themes/tella/themes/**/layouts/**/*.{html,js}",
-                    "themes/tella/themes/**/assets/**/*.{js,css,html}",
+                    "layouts/**/*.{html,js}",
+                    "content/**/*.{md,html}",
+                    "themes/**/layouts/**/*.{html,js}",
+                    "themes/**/assets/**/*.{js,html}",
                     "./hugo.toml",
                 ],
                 outFile: 'themes/tella/assets/css/style.css'

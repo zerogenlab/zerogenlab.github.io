@@ -1,0 +1,49 @@
+{{ define "main" }}
+  {{ $items := index .Site.Data "research" "publications" .Lang }}
+
+  <section class="container mx-auto px-4 py-10">
+    <h1 class="page-title text-3xl py-12">{{ .Title }}</h1>
+
+    <div class="data-table-wrap">
+      <table class="data-table" style="font-size:16px; line-height:1.65;">
+        <colgroup>
+          <col style="width:72px">
+          <col style="width:360px">   <!-- 名称列：加宽 -->
+          <col style="width:260px">
+          <col style="width:160px">
+        </colgroup>
+
+        <thead>
+          <tr>
+            <th>序号</th>
+            <th style="text-align:center">名称</th>
+            <th>作者</th>
+            <th>发表时间</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {{ range $i, $p := $items }}
+            <tr>
+              <td>{{ add $i 1 }}</td>
+              <td>
+                {{ if $p.link }}
+                  <a href="{{ $p.link }}"
+                    target="_blank"
+                    rel="noopener"
+                    class="paper-link">
+                    {{ $p.name }}
+                  </a>
+                {{ else }}
+                  {{ $p.name }}
+                {{ end }}
+              </td>
+              <td>{{ $p.authors }}</td>
+              <td style="text-align: center;">{{ $p.date }}</td>
+            </tr>
+          {{ end }}
+        </tbody>
+      </table>
+    </div>
+  </section>
+{{ end }}

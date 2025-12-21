@@ -1,0 +1,14 @@
+{{ define "main" }}
+<article class="news-page">
+
+  {{ $show := .Params.showTitle | default true }}
+  {{ if $show }}
+    <h1 class="page-title py-10">{{ .Title }}</h1>
+  {{ end }}
+
+  <div class="longform">
+    {{ .Content }}
+  </div>
+
+</article>
+{{ end }}

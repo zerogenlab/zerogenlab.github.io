@@ -1,0 +1,35 @@
+{{ define "main" }}
+  {{ $items := index .Site.Data "research" "projects" .Lang }}
+  
+  <section class="container mx-auto px-4 py-10">
+    <h1 class="page-title text-3xl py-12">{{ .Title }}</h1>
+
+    <div class="data-table-wrap">
+      <table class="data-table" style="font-size:16px; line-height:1.65;">
+        <colgroup>
+          <col style="width:72px">
+          <col style="width:300px"> 
+          <col style="width:160px">
+          
+        </colgroup>
+        <thead>
+          <tr>
+            <th>序号</th>
+            <th style="text-align: center;">名称</th>
+            <th>起始时间</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {{ range $i, $p := $items }}
+            <tr>
+              <td>{{ add $i 1 }}</td>
+              <td>{{ $p.name }}</td>
+              <td>{{ $p.period }}</td>
+            </tr>
+          {{ end }}
+        </tbody>
+      </table>
+    </div>
+  </section>
+{{ end }}

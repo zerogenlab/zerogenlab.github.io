@@ -1,0 +1,22 @@
+<section class="py-8 lg:py-12">
+  <h2 class="text-3xl text-center font-700 mb-6 text-[#1E2939]">{{ .title }}</h2>
+
+  <div
+    class="
+      <sm:[--items:1] <sm:[--gap:6]
+      sm:[--items:2] sm:[--gap:8]
+      lg:[--items:3] lg:[--gap:12]
+      xl:[--items:4] xl:[--gap:16]
+      <sm:px-12 px-6
+      flex justify-center flex-wrap
+    "
+    style="gap: calc(var(--spacing) * var(--gap));"
+  >
+    {{ range .people }}
+        <div style="width: calc(100% / var(--items) - var(--spacing) * var(--gap) * (var(--items) - 1) / var(--items));">
+        {{ partial "members/card.html" . }}
+        </div>
+    {{ end }}
+   </div>
+
+</section>

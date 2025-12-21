@@ -1,20 +1,32 @@
 baseURL = "http://localhost:1313/"
 title = "ZeroGen Lab"
 author = "ZGL-Zhou Zhuhan"
-languageCode = "zh-cn"
-DefaultContentLanguage = "zh-cn"
+languageCode = "zh"
+DefaultContentLanguage = "zh"
+defaultContentLanguageInSubdir = false
 enableInlineShortcodes = true
 theme = "tella"
 enableRobotsTXT = true
 
 # Please enable this feature if the site is available in Japanese, Chinese or Korean.
-#hasCJKLanguage = true
+hasCJKLanguage = true
 
 # If you're using Google Analytics, you can enable this feature.
 #googleAnalytics = "UA-12345678-1"
 
 # Disqus Comment System
 #disqusShortname = ""
+
+[languages]
+  [languages.zh]
+    languageName = "简体中文"
+    weight = 1
+    contentDir = "content"
+
+  [languages.en]
+    languageName = "English"
+    weight = 2
+    contentDir = "content"
 
 [params]
 
@@ -50,72 +62,164 @@ enableRobotsTXT = true
     meta_og_description = "ZeroGen Lab:Exploring GenAI with a from-zero mindset."
 
 
-[menu]
+[languages.zh.menu]
 
-  [[menu.main]]
+  [[languages.zh.menu.main]]
     identifier = "home"
     name = "首页"
     url = "/"
     weight = 1
 
-  [[menu.main]]
+  [[languages.zh.menu.main]]
     identifier = "members"
     name = "成员"
     url = "/members/"
     weight = 2
 
-  [[menu.main]]
-    identifier = "projects"
-    name = "项目"
-    url = "/projects/"
+  [[languages.zh.menu.main]]
+    identifier = "research"
+    name = "科研"
+    url = "/research/"
     weight = 3
 
-  [[menu.main]]
+  [[languages.zh.menu.main]]
+    parent = "research"
+    name = "论文"
+    url = "/research/publications/"
+    weight = 1
+
+  [[languages.zh.menu.main]]
+    parent = "research"
+    name = "项目"
+    url = "/research/projects/"
+    weight = 2
+
+  [[languages.zh.menu.main]]
     name = "教学"
     identifier = "teaching"
     weight = 4
 
-    [[menu.main]]
-      parent = "teaching"
-      name = "机器学习"
-      url = "https://dasellmg.yuque.com/org-wiki-dasellmg-vsl5wg/ml2025"
-      weight = 1
+  [[languages.zh.menu.main]]
+    parent = "teaching"
+    name = "机器学习"
+    url = "https://dasellmg.yuque.com/org-wiki-dasellmg-vsl5wg/ml2025"
+    weight = 1
 
-    [[menu.main]]
-      parent = "teaching"
-      name = "人工智能理论与方法"
-      url = "https://dasellmg.yuque.com/org-wiki-dasellmg-vsl5wg/aitm-2025"
-      weight = 2
+  [[languages.zh.menu.main]]
+    parent = "teaching"
+    name = "人工智能理论与方法"
+    url = "https://dasellmg.yuque.com/org-wiki-dasellmg-vsl5wg/aitm-2025"
+    weight = 2
 
-    [[menu.main]]
-      parent = "teaching"
-      name = "从零开始语言模型构建实践"
-      url = "https://dasellmg.yuque.com/org-wiki-dasellmg-vsl5wg/lmfs2025"
-      weight = 3
+  [[languages.zh.menu.main]]
+    parent = "teaching"
+    name = "从零开始语言模型构建实践"
+    url = "https://dasellmg.yuque.com/org-wiki-dasellmg-vsl5wg/lmfs2025"
+    weight = 3
 
-    
-  
-  [[menu.main]]
+  [[languages.zh.menu.main]]
     identifier = "coideas"
     name = "Coideas Hub"
-    url = "https://你的-coideas-hub-地址"
+    url = "/coideas/"
     weight = 5
 
-  [[menu.main]]
-    identifier = "join"
-    name = "加入我们"
-    url = "/join/"
+  [[languages.zh.menu.main]]
+    identifier = "about"
+    name = "关于我们"
+    url = "/about/"
     weight = 6
 
-  # Footer Menu
+
+[languages.en.menu]
+
+  [[languages.en.menu.main]]
+    identifier = "home"
+    name = "Home"
+    url = "/en/"
+    weight = 1
+
+  [[languages.en.menu.main]]
+    identifier = "members"
+    name = "Members"
+    url = "/en/members/"
+    weight = 2
+
+  [[languages.en.menu.main]]
+    identifier = "research"
+    name = "Research"
+    url = "/en/research/"
+    weight = 3
+  
+  [[languages.en.menu.main]]
+    parent = "research"
+    name = "Publications"
+    url = "/en/research/publications/"
+    weight = 1
+
+  [[languages.en.menu.main]]
+    parent = "research"
+    name = "Projects"
+    url = "/en/research/projects/"
+    weight = 2
+
+  [[languages.en.menu.main]]
+    name = "Teaching"
+    identifier = "teaching"
+    weight = 4
+
+  [[languages.en.menu.main]]
+    parent = "teaching"
+    name = "Machine Learning"
+    url = "https://dasellmg.yuque.com/org-wiki-dasellmg-vsl5wg/ml2025"
+    weight = 1
+
+  [[languages.en.menu.main]]
+    parent = "teaching"
+    name = "AI Theory & Methods"
+    url = "https://dasellmg.yuque.com/org-wiki-dasellmg-vsl5wg/aitm-2025"
+    weight = 2
+
+  [[languages.en.menu.main]]
+    parent = "teaching"
+    name = "LM from Scratch"
+    url = "https://dasellmg.yuque.com/org-wiki-dasellmg-vsl5wg/lmfs2025"
+    weight = 3
+
+  # 待修改
+  [[languages.en.menu.main]]
+    identifier = "coideas"
+    name = "Coideas Hub"
+    url = "/en/coideas"
+    weight = 5
+
+  [[languages.en.menu.main]]
+    identifier = "about"
+    name = "About Us"
+    url = "/en/about/"
+    weight = 6
+
+
+[menu]
   [[menu.footer]]
     name = "Home"
     url = "/"
-      weight = 1
+    weight = 1
 
-  #待修改
   [[menu.footer]]
     name = "Github"
     url = "https://github.com/opera7133/tella"
     pre = "<i class='icon-github text-2xl'></i>"
-      weight = 2
+    weight = 2
+
+[outputFormats]
+  [outputFormats.SearchIndex]
+    mediaType = "application/json"
+    baseName = "search"
+    isPlainText = true
+    notAlternative = true
+
+[outputs]
+  home = ["HTML", "SearchIndex"]
+
+
+

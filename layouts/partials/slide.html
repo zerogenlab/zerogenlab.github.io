@@ -1,14 +1,22 @@
-<div class="swiper-container">
-    <div class="swiper-wrapper">
-        {{ range .Site.Data.slide }}
-        <div class="swiper-slide">
-            <img src="{{ .image }}" alt="{{ .alt }}">
-            <div class="s-fade-txt">
-                <h1 class="text-4xl {{ or .color "text-white" }}">{{ .title }}</h1>
-            </div>
+<div class="swiper-container sm:h-400px <sm:h-300px lg:h-[clamp(360px,40vh,520px)]">
+  <div class="swiper-wrapper">
+
+    {{ $lang := .Site.Language.Lang }}
+    {{ $slides := (index .Site.Data.slide $lang) | default .Site.Data.slide.zh }}
+
+    {{ range $slides }}
+      <div class="swiper-slide">
+        <img src="{{ printf "/%s" .image | relURL }}" alt="{{ .title }}" class="w-full h-full object-cover">
+        <div class="s-fade-txt">
+          <h1 class="text-4xl text-white">
+            {{ .title }}
+          </h1>
         </div>
-        {{ end }}
-    </div>
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
+      </div>
+    {{ end }}
+
+  </div>
+
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
 </div>

@@ -42,7 +42,6 @@
 
 .nav-dropdown {
   position: relative;
-  margin-right: 2rem;
 }
 
 .nav-link {
@@ -59,7 +58,7 @@
   min-width: 220px;
 
   background: #ffffff;
-  border-radius: 12px;
+  border-radius: 0;
   padding: 0.5rem 0;
 
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
@@ -79,7 +78,7 @@
   transform: translateX(-50%) translateY(8px);
 }
 
-/* 子项显示 */
+/* 教学子项显示 */
 .nav-dropdown-item {
   display: block;
   padding: 0.6rem 1.2rem;
@@ -92,17 +91,33 @@
   background: rgba(0, 0, 0, 0.04);
 }
 
-/*  搜索 UI  */
-.search-wrap{
-  position: relative;
-  width: 280px;               /* 你现在 w-56=224px，4K 上偏短；可改 260/300 */
+/* 科研子项显示 */
+.nav-dropdown--research .nav-dropdown-menu{
+  min-width: 6rem;
+  padding: 0.35rem 0 !important;
 }
 
+.nav-dropdown--research .nav-dropdown-item{
+  padding: 0.42rem 0.9rem !important;
+  font-size: 0.95rem !important;
+  white-space: nowrap;
+}
+
+/* 下拉菜单的顶级文字 hover 变浅 */
+.nav-dropdown .nav-link{
+  transition: opacity 0.2s ease;
+}
+
+.nav-dropdown:hover .nav-link{
+  opacity: 0.6;
+}
+
+/*  搜索框样式  */
 .search-input{
   width: 100%;
   border: 1px solid rgba(0,0,0,0.14);
   border-radius: 9999px;
-  padding: 0.55rem 1rem; /* 右侧留给快捷键提示 */
+  padding: 0.55rem 1rem; 
   font-size: 0.95rem;
   background: rgba(255,255,255,0.85);
   transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
@@ -118,7 +133,7 @@
 /*  首页 Logo  */
 /* Logo hover 微交互 */
 .nav-logo {
-  height: 58px;
+  height: 62px;
   width: auto;
   margin-right: 12px;
   display: block;
@@ -133,12 +148,11 @@
   transform: scale(1.04);
 }
 
-/*  Slide sizing  */
+/*  Slide sizing */
 .swiper-container {
-  height: clamp(360px, 40vh, 520px);  /* banner尺寸 */
   position: relative;
   overflow: hidden;            
-}
+} 
 
 /*  wrapper/slide 填满容器高度 */
 .swiper-wrapper,
@@ -173,13 +187,6 @@
 }
 
 /*  文本层：位置、层级、字号自适应 2K/4K  */
-.s-fade-txt {
-  position: absolute;
-  left: clamp(20px, 4vw, 64px);
-  bottom: clamp(20px, 4vw, 56px);
-  z-index: 2;
-}
-
 .s-fade-txt h1 {
   font-size: clamp(28px, 3vw, 48px);  /* 替代 text-4xl 更适配4K */
   line-height: 1.1;
@@ -215,10 +222,190 @@
   text-shadow: 0 2px 8px rgba(0,0,0,0.5);
 }
 
+/* 语言切换整体容器 */
+.lang-switch {
+  position: relative;
+}
+
+/* hover 缓冲区（透明） */
+.lang-switch::after {
+  content: "";
+  position: absolute;
+  top: 100%;           /* 从按钮底部开始 */
+  left: -12px;
+  right: -12px;
+  height: 20px;      
+  background: transparent;
+}
+
+/* dropdown 面板（语言） */
+.lang-dropdown {
+  border-radius: 0;    
+  font-size: 0.875 rem;
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease,
+    visibility 0.15s ease;
+}
+
 /* ===== Footer 视觉贴底 ===== */
 body.home footer {
   margin-top: calc(100vh - 100%);
 }
+
+/* 成员样式 */
+.member-card{
+  min-height: 360px; /* 让不同文字长度的卡片底部 icon 能对齐 */
+  box-shadow: 0 12px 20px -6px rgba(0,0,0,0.06);
+}
+
+.member-avatar{
+  background: #fff;  /* 头像边缘更干净 */
+}
+
+/* research 样式 */
+/* 页面标题颜色 */
+.page-title{
+  font-size: clamp(30px, 3vw, 40px);  
+  line-height: 1.15;
+  color: #1E2939;
+  font-weight: 700;
+  text-align: center;
+  margin: 0 0 18px;
+  opacity: 0;
+  transform: translateY(-12px);
+  animation: titleFadeDown 0.8s ease-out forwards;
+  will-change: transform, opacity;
+}
+
+@keyframes titleFadeDown{
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .page-title{ animation: none; opacity: 1; transform: none; }
+}
+
+/* 表格容器 */
+.data-table-wrap{
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+}
+
+/* 表格基础 */
+.data-table{
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
+}
+
+.data-table thead th{
+  text-align: left;
+  padding: 14px 16px;
+  font-weight: 700;
+  background: #fff;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.10);
+}
+
+.data-table tbody td{
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+  vertical-align: top;
+}
+
+.data-table tbody tr:last-child td{
+  border-bottom: none;
+}
+
+.data-table td:first-child,
+.data-table th:first-child{
+  text-align: center;
+}
+
+/* ===== 论文链接样式 ===== */
+.paper-link {
+  color: #1E2939;          
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.paper-link:hover {
+  text-decoration: underline;
+}
+
+.paper-link.is-clicked {
+  color: #9CA3AF;          /* 当前会话点过：灰色 */
+}
+
+/* =====================================================
+   About Page 
+   ===================================================== */
+
+/* About 页面整体作用域 */
+.about-page {
+  padding-top: 3rem;
+  padding-bottom: 4rem;
+}
+
+/* 正文区域：放大字号 + 增大行距 */
+.about-content {
+  max-width: 68ch;              /* 学术阅读黄金行宽 */
+  margin: 0 auto;
+  font-size: 1.15rem;           /* 正文整体变大 */
+  line-height: 1.9;             /* 行距明显增大 */
+  color: #1E2939;
+}
+
+/* 二级标题（实验室简介 / 研究方向 等） */
+.about-content h2 {
+  font-size: 1.6rem;
+  margin-top: 3.5rem;
+  margin-bottom: 1.2rem;
+  font-weight: 600;
+  color: #1E2939;
+}
+
+/* 段落间距 */
+.about-content p {
+  margin-bottom: 1.2rem;
+}
+
+/* 列表（研究方向） */
+.about-content ul {
+  padding-left: 1.2rem;
+}
+
+.about-content li {
+  margin-bottom: 0.6rem;
+}
+
+/* =====================================================
+   新闻详情页套用about样式
+   ===================================================== */
+.longform {
+  max-width: 68ch;
+  margin: 0 auto;
+  font-size: 1.15rem;
+  line-height: 1.9;
+  color: #1E2939;
+}
+
+.longform h2 {
+  font-size: 1.6rem;
+  margin-top: 3.5rem;
+  margin-bottom: 1.2rem;
+  font-weight: 600;
+  color: #1E2939;
+}
+
+.longform p { margin-bottom: 1.2rem; }
+
+.longform ul { padding-left: 1.2rem; }
+
+.longform li { margin-bottom: 0.6rem; }
+
 
 
 
