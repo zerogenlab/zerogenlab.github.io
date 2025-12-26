@@ -1,4 +1,3 @@
-- name: 国家自然科学基金青年项目
-  source: 国家自然科学基金委员会
-  members: "张三、 李四"
-  period: 2023–2025
+- name: 基于自监督算法的风控交易大模型训练及应用
+  source: 智谱 AI
+  period: 2025

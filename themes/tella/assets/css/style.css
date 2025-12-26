@@ -1,5 +1,5 @@
 /* layer: properties */
-@supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))){*, ::before, ::after, ::backdrop{--un-bg-opacity:100%;--un-text-opacity:100%;--un-leading:initial;--un-border-opacity:100%;--un-ring-opacity:100%;--un-translate-x:initial;--un-translate-y:initial;--un-translate-z:initial;--un-divide-y-reverse:initial;--un-border-style:solid;--un-divide-opacity:100%;}}
+@supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))){*, ::before, ::after, ::backdrop{--un-leading:initial;--un-border-opacity:100%;--un-text-opacity:100%;--un-bg-opacity:100%;--un-ring-opacity:100%;--un-translate-x:initial;--un-translate-y:initial;--un-translate-z:initial;--un-divide-y-reverse:initial;--un-border-style:solid;--un-divide-opacity:100%;}}
 @property --un-text-opacity{syntax:"<percentage>";inherits:false;initial-value:100%;}
 @property --un-leading{syntax:"*";inherits:false;}
 @property --un-border-opacity{syntax:"<percentage>";inherits:false;initial-value:100%;}
@@ -26,12 +26,19 @@
 /* layer: theme */
 :root, :host {
 --spacing: 0.25rem;
---container-7xl: 80rem;
 --text-2xl-fontSize: 1.5rem;
 --text-2xl-lineHeight: 2rem;
+--container-7xl: 80rem;
 --container-6xl: 72rem;
 --text-5xl-fontSize: 3rem;
 --text-5xl-lineHeight: 1;
+--colors-black: #000;
+--text-3xl-fontSize: 1.875rem;
+--text-3xl-lineHeight: 2.25rem;
+--text-xs-fontSize: 0.75rem;
+--text-xs-lineHeight: 1rem;
+--text-lg-fontSize: 1.125rem;
+--text-lg-lineHeight: 1.75rem;
 --colors-slate-100: oklch(96.8% 0.007 247.896);
 --colors-gray-800: oklch(27.8% 0.033 256.848);
 --colors-white: #fff;
@@ -39,14 +46,6 @@
 --colors-slate-700: oklch(37.2% 0.044 257.287);
 --text-xl-fontSize: 1.25rem;
 --text-xl-lineHeight: 1.75rem;
---text-lg-fontSize: 1.125rem;
---text-lg-lineHeight: 1.75rem;
---colors-black: #000;
---text-3xl-fontSize: 1.875rem;
---text-3xl-lineHeight: 2.25rem;
---text-xs-fontSize: 0.75rem;
---text-xs-lineHeight: 1rem;
---colors-slate-800: oklch(27.9% 0.041 260.031);
 --fontWeight-normal: 400;
 --tracking-tight: -0.025em;
 --default-transition-timingFunction: cubic-bezier(0.4, 0, 0.2, 1);
@@ -54,6 +53,7 @@
 --radius-lg: 0.5rem;
 --text-sm-fontSize: 0.875rem;
 --text-sm-lineHeight: 1.25rem;
+--colors-slate-800: oklch(27.9% 0.041 260.031);
 --text-4xl-fontSize: 2.25rem;
 --text-4xl-lineHeight: 2.5rem;
 --radius-xl: 0.75rem;
