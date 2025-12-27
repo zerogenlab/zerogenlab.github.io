@@ -161,7 +161,7 @@ hasCJKLanguage = true
 
   [[languages.en.menu.main]]
     parent = "research"
-    name = "Projects&Fundings"
+    name = "Projects"
     url = "/en/research/projects/"
     weight = 2
 

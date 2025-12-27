@@ -3,7 +3,8 @@ sections:
     people:
       - name: Renjun Hu
         photo: /img/members/advisor.jpeg
-        desc: Young Researcher
+        desc: Generative and Agentic AI
+        grade: Young Researcher
 # 博士生
   - title: PhD Students
     people:
@@ -20,7 +21,7 @@ sections:
         grade: Grade 2025
       - name: Zeyuan Liu
         photo: /img/members/master2.jpg
-        desc: Sequence Modeling
+        desc: Generative Sequential Modeling
         grade: Grade 2025
       - name: Jinglei Xu
         photo: /img/members/master3.jpeg
@@ -28,11 +29,11 @@ sections:
         grade: Grade 2025
       - name: Yansong Chen
         photo: /img/members/master4.jpg
-        desc: Evaluation of Large Model OCR Capabilities
+        desc: VLM Evaluation and Enhancement
         grade: Grade 2025
 
 # 本科生
-  - title: Bachelor Students
+  - title: Undergraduate Students
     people:
       - name: Fang Li
         photo: /img/members/ug1.jpg

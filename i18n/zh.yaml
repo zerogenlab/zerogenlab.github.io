@@ -8,7 +8,10 @@ more:
   other: "更多"
 
 fundings:
-  other: "资金项目"
+  other: "资助项目"
+
+self_developed_projects:
+  other: "自研项目"
 
 num:
   other: "序号"
@@ -26,7 +29,7 @@ period_1:
   other: "起始时间"
 
 period_2:
-  other: "起止时间"
+  other: "执行时间"
 
 authors:
   other: "作者"
@@ -36,6 +39,9 @@ venue:
 
 repo:
   other: "仓库"
+
+links:
+  other: "链接"
 
 date:
   other: "发表时间"

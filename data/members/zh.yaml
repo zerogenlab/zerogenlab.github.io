@@ -3,33 +3,34 @@ sections:
     people:
       - name: 胡仁君
         photo: /img/members/advisor.jpeg
-        desc: 青年研究员
+        desc: 生成式人工智能、智能体
+        grade: 青年研究员
 # 博士生
   - title: 博士生
     people:
       - name: 张洳维
         photo: /img/members/phd1.jpg
-        desc: GUI自动测试
-        grade: 2026 级
+        desc: GUI 自动测试
+        grade: 2026
 # 硕士生
   - title: 硕士生
     people:
       - name: 周珠晗
         photo: /img/members/master1.jpg
-        desc: LLM Long-term Memory
-        grade: 2025 级
+        desc: 语言模型长期记忆
+        grade: 2025
       - name: 刘泽源
         photo: /img/members/master2.jpg
-        desc: 序列建模
-        grade: 2025 级
+        desc: 生成式序列建模
+        grade: 2025
       - name: 徐静蕾
         photo: /img/members/master3.jpeg
-        desc: LLM Reasoning
-        grade: 2025 级
+        desc: LLM 推理
+        grade: 2025
       - name: 陈岩松
         photo: /img/members/master4.jpg
-        desc: 大模型OCR能力评测
-        grade: 2025 级
+        desc: VLM 评估及优化
+        grade: 2025
 
 # 本科生
   - title: 本科生
@@ -40,13 +41,13 @@ sections:
         grade: 2022 级
       - name: 闫研
         photo: /img/members/ug2.jpg
-        desc: Efficient Context Reasoning 
+        desc: 上下文高效推理
         grade: 2022 级
       - name: 张凯诚
         photo: /img/members/ug3.jpg
-        desc: LLM理解评估
+        desc: 大模型价值观理解评估
         grade: 2023 级
       - name: 孙嘉
         photo: /img/members/ug4.png
-        desc: LLM Reasoning
+        desc: LLM 推理
         grade: 2023 级
