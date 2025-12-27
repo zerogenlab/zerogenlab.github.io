@@ -10,8 +10,9 @@
     "dev": "concurrently npm:dev:*",
     "dev:css": "unocss --watch",
     "dev:hugo": "hugo server",
-    "build:css": "unocss",
-    "build": "npm run build:css && hugo --minify"
+    "build:css": "unocss -m",
+    "build": "npm run build:css && hugo --minify",
+    "prepare": "npm run build:css"
   },
   "devDependencies": {
     "@unocss/preset-wind4": "^66.5.10",

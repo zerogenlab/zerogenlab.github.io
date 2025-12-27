@@ -17,7 +17,7 @@ export default defineConfig({
                     "themes/**/assets/**/*.{js,html}",
                     "./hugo.toml",
                 ],
-                outFile: 'themes/tella/assets/css/style.css'
+                outFile: 'static/css/uno.css'
             }
         ]
     },
