@@ -1,0 +1,106 @@
+{{ define "main" }}
+<article class="member-page">
+
+  {{ $avatarParam := .Params.avatar }}
+  {{ $avatarRel := "" }}
+  {{ if $avatarParam }}
+    {{ if or (hasPrefix $avatarParam "http://") (hasPrefix $avatarParam "https://") (hasPrefix $avatarParam "/") }}
+      {{ $avatarRel = $avatarParam }}
+    {{ else }}
+      {{ with .Resources.GetMatch $avatarParam }}
+        {{ $avatarRel = .RelPermalink }}
+      {{ end }}
+      {{ if not $avatarRel }}
+        {{ with .Resources.GetMatch (printf "**%s" $avatarParam) }}
+          {{ $avatarRel = .RelPermalink }}
+        {{ end }}
+      {{ end }}
+      {{ if not $avatarRel }}
+        {{ $avatarRel = ($avatarParam | relURL) }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+
+  {{ $intro := .Params.intro }}
+
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-10 lg:py-14">
+    <div class="grid grid-cols-1 lg:grid-cols-[360px_1fr] gap-14 lg:gap-16 items-start">
+
+      <!-- Left: Profile card -->
+      <aside class="lg:sticky lg:top-24">
+        <div class="bg-white rounded-2xl p-6">
+          <div class="flex flex-col items-center text-center">
+
+            <!-- Avatar -->
+            <div class="w-36 h-36 rounded-full overflow-hidden bg-black/5 ring-1 ring-black/10">
+              {{ if $avatarRel }}
+                <img
+                  src="{{ $avatarRel }}"
+                  alt="{{ .Title }}"
+                  class="w-full h-full object-cover [object-position:50%_25%]"
+                  loading="lazy"
+                />
+              {{ else }}
+                <div class="w-full h-full flex items-center justify-center text-black/40 text-sm">
+                  No Avatar
+                </div>
+              {{ end }}
+            </div>
+
+            <!-- Name -->
+            <h1 class="mt-5 text-[30px] font-700 tracking-tight text-[#1E2939] w-full text-center">
+              {{ .Title }}
+            </h1>
+
+            <!-- Intro -->
+            {{ with $intro }}
+              <div class="mt-2 w-full text-[16px] leading-relaxed text-[#1E2939]/70 text-left">
+                {{ . }}
+              </div>
+            {{ end }}
+
+            <!-- Divider between intro and meta -->
+            <div class="mt-4 w-full h-px bg-black/10 "></div>
+
+            <!-- Meta list -->
+            {{ with .Params.meta }}
+              <div class="mt-4 text-[16px] flex flex-col gap-4 w-full text-left">
+                {{ range . }}
+                  {{ $icon := .icon | default "default" }}
+                  {{ $label := .label | default "" }}
+                  {{ $url := .url | default "" }}
+
+                  {{ if $url }}
+                    <a href="{{ $url }}" target="_blank" rel="noopener"
+                       class="inline-flex items-center gap-4 text-[#1E2939]/70 hover:text-[#1E2939] transition"
+                       style="text-decoration:none;">
+                      {{ partial "members/icon.html" (dict "name" $icon) }}
+                      <span>{{ $label }}</span>
+                    </a>
+                  {{ else }}
+                    <div class="inline-flex items-center gap-4 text-[#1E2939]/70">
+                      {{ partial "members/icon.html" (dict "name" $icon) }}
+                      <span>{{ $label }}</span>
+                    </div>
+                  {{ end }}
+                {{ end }}
+              </div>
+            {{ end }}
+
+          </div> 
+        </div>   
+      </aside>
+
+      <!-- Right: Content -->
+      <main class="min-w-0">
+        <div class="member-content about-content">
+          {{ .Content }}
+        </div>
+      </main>
+
+    </div>
+  </section>
+</article>
+{{ end }}
+
+

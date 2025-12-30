@@ -1,0 +1,71 @@
+{{- /* =========================
+        {{ partial "members/icon.html" (dict "name" "github") }}
+   ========================= */ -}}
+
+{{- $name := .name | default "default" -}}
+
+{{- $icons := dict
+
+  "position" `
+<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="shrink-0">
+  <path fill="currentColor"
+    d="M12 2C8.134 2 5 5.134 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.866-3.134-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/>
+</svg>
+`
+
+  "github" `
+<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="shrink-0">
+  <path fill="currentColor"
+    d="M12 2C6.477 2 2 6.58 2 12.253c0 4.53 2.865 8.377 6.839 9.735.5.095.682-.223.682-.495
+    0-.244-.009-.892-.014-1.75-2.782.617-3.369-1.37-3.369-1.37-.454-1.182-1.11-1.497-1.11-1.497
+    -.908-.64.069-.627.069-.627 1.004.072 1.532 1.06 1.532 1.06.892 1.565 2.341 1.113 2.91.851
+    .091-.664.349-1.113.636-1.369-2.222-.26-4.555-1.14-4.555-5.074
+    0-1.121.39-2.038 1.03-2.756-.103-.26-.447-1.305.098-2.72
+    0 0 .84-.276 2.75 1.052.8-.23 1.655-.345 2.505-.349
+    .85.004 1.706.119 2.507.349
+    1.909-1.328 2.748-1.052 2.748-1.052.546 1.415.202 2.46.1 2.72
+    .64.718 1.028 1.635 1.028 2.756
+    0 3.944-2.337 4.81-4.566 5.065
+    .359.319.679.95.679 1.915
+    0 1.382-.012 2.497-.012 2.837
+    0 .274.18.594.688.493
+    C19.138 20.627 22 16.782 22 12.253
+    22 6.58 17.523 2 12 2z"/>
+</svg>
+`
+
+  "scholar" `
+<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="shrink-0">
+  <path fill="currentColor"
+    d="M12 3 2.5 8l9.5 5 7.5-3.95V15h1V8L12 3zm0 12L5 11.2V16c0 2.2 3 4 7 4s7-1.8 7-4v-4.8L12 15z"/>
+</svg>
+`
+
+  "mail" `
+<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="shrink-0">
+  <path fill="currentColor"
+    d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16
+       c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
+</svg>
+`
+
+  "home" `
+<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="shrink-0">
+  <path fill="currentColor"
+    d="M12 3 2 12h3v8h6v-5h2v5h6v-8h3z"/>
+</svg>
+`
+
+  "default" `
+<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="shrink-0">
+  <path fill="currentColor"
+    d="M3.9 12a5 5 0 0 1 5-5h3v2h-3a3 3 0 0 0 0 6h3v2h-3a5 5 0 0 1-5-5zm7-1h2v2h-2v-2zm4.1-4h-3v2h3a3 3 0 0 1 0 6h-3v2h3a5 5 0 0 0 0-10z"/>
+</svg>
+`
+
+-}}
+
+{{- $svg := index $icons $name | default (index $icons "default") -}}
+{{- $svg | safeHTML -}}
+
+

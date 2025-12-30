@@ -3,8 +3,8 @@
   {{ $github := .github }}
   {{ $hasGithub := $github }}
 
-  {{ $profile := (.page | default (printf "/members/%s/" (.name | urlize))) }}
-  {{ $hasProfile := $profile }}
+  {{ $profile := .page }}
+  {{ $hasProfile := isset . "page"}}
 
   {{ $scholar := .scholar }}
   {{ $hasScholar := $scholar }}

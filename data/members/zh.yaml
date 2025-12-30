@@ -7,6 +7,7 @@ sections:
         grade: 青年研究员
         github: https://github.com/hurenjun
         scholar: https://scholar.google.com/citations?user=H3jomREAAAAJ&hl=en
+        page: "/members/rjhu"
 # 博士生
   - title: 博士生
     people:
