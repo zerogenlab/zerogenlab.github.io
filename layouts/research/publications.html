@@ -28,7 +28,7 @@
                 {{- $authors := $p.authors | default "" -}}
                 {{- $authors = replace $authors "Renjun Hu" "<strong>Renjun Hu</strong>" -}}
                 {{- $authors = replace $authors "#" "<sup class=\"author-mark\">#</sup>" -}}
-                {{- $authors | safeHTML -}}. <span style="color: blue;">{{ $p.title }}</span>. <em>{{ $p.venue }}</em>, {{ $p.year }}.
+                {{- $authors | safeHTML -}}. <span style="color: #0b6aee;">{{ $p.title }}</span>. <em>{{ $p.venue }}</em>, {{ $p.year }}.
                 {{- if $p.note -}} <span style="color: red;"> ({{ $p.note }})</span>{{- end -}}
               </td>
               <td style="text-align:center;">
