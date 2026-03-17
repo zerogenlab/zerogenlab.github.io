@@ -25,26 +25,29 @@ source:
 members:
   other: "Members"
 
-period_1:
+proj_start:
   other: "Project Start"
 
-period_2:
+proj_duration:
   other: "Duration"
 
-authors:
-  other: "Authors"
-
-venue:
-  other: "Venue"
-
-repo:
-  other: "Repo"
+publication:
+  other: "Paper Details (# indicates equal contribution, * indicates corresponding author)"
 
 links:
   other: "Links"
 
-date:
-  other: "Year"
+# authors:
+#   other: "Authors"
 
-title:
-  other: "Title"
+# title:
+#   other: "Title"
+
+# venue:
+#   other: "Venue"
+
+# year:
+#   other: "Year"
+
+# repo:
+#   other: "Repo"
