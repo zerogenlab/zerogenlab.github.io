@@ -25,26 +25,29 @@ source:
 members:
   other: "成员"
 
-period_1:
+proj_start:
   other: "起始时间"
 
-period_2:
+proj_duration:
   other: "执行时间"
 
-authors:
-  other: "作者"
-
-venue:
-  other: "会议/期刊"
-
-repo:
-  other: "仓库"
+publication:
+  other: "论文详情（#/* 表示共同一作/通讯作者）"
 
 links:
   other: "链接"
 
-date:
-  other: "发表时间"
+# authors:
+#   other: "作者"
 
-title:
-  other: "标题"
+# title:
+#   other: "标题"
+
+# venue:
+#   other: "会议/期刊"
+
+# year:
+#   other: "年份"
+
+# repo:
+#   other: "代码仓库"

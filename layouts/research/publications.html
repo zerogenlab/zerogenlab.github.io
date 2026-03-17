@@ -8,20 +8,14 @@
       <table class="data-table" style="font-size:18px; line-height:1.65;">
         <colgroup>
           <col style="width:72px">
-          <col style="width:350px">
-          <col style="width:480px"> 
-          <col style="width:170px">
-          <col style="width:110px">
-          <col style="width:110px">
+          <col style="width:1024px">
+          <col style="width:192px">
         </colgroup>
 
         <thead>
           <tr>
-            <th>{{ i18n "num" }}</th>
-            <th>{{ i18n "authors" }}</th>
-            <th>{{ i18n "title" }}</th>
-            <th style="text-align:center">{{ i18n "venue" }}</th>
-            <th style="text-align:center">{{ i18n "date" }}</th>
+            <th style="text-align:center">{{ i18n "num" }}</th>
+            <th style="text-align:center">{{ i18n "publication" }}</th>
             <th style="text-align:center">{{ i18n "links" }}</th>
           </tr>
         </thead>
@@ -34,24 +28,8 @@
                 {{- $authors := $p.authors | default "" -}}
                 {{- $authors = replace $authors "Renjun Hu" "<strong>Renjun Hu</strong>" -}}
                 {{- $authors = replace $authors "#" "<sup class=\"author-mark\">#</sup>" -}}
-                {{- $authors | safeHTML -}}
-              </td>
-              <td>
-                  {{ $p.title }}
-              </td>
-              <td class="cell-center">
-                <div class="cell-center-inner">
-                  {{ with $p.venue }}
-                    {{ . }}
-                  {{ else }}
-                    -
-                  {{ end }}
-                
-              </td>
-              <td class="cell-center">
-                <div class="cell-center-inner">
-                  {{ $p.date }}
-                </div>
+                {{- $authors | safeHTML -}}. <span style="color: #6088b3;">{{ $p.title }}</span>. <em>{{ $p.venue }}</em>, {{ $p.year }}.
+                {{- if $p.note -}} <span style="color: rgb(174, 46, 46);"> ({{ $p.note }})</span>{{- end -}}
               </td>
               <td style="text-align:center;">
                 {{- $hasAny := or
@@ -65,7 +43,7 @@
                 {{- if not $hasAny -}}
                   -
                 {{- else -}}
-                  <div class="flex flex-col items-center gap-y-1">
+                  <div class="grid grid-cols-2 gap-1 items-center justify-items-center">  
                     {{/* paper */}}
                     {{- $paper := "paper" -}}
                     {{ if and $p.link (ne $p.link "-") }}
@@ -132,9 +110,6 @@
                         <span>{{ $p.poster }}</span>
                       {{ end }}
                     {{ end }}
-
-                    
-
                   </div>
                 {{- end -}}
               </td>
