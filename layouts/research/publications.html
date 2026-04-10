@@ -1,5 +1,5 @@
 {{ define "main" }}
-  {{ $items := index .Site.Data "research" "publications" .Lang }}
+  {{ $items := .Site.Data.research.publications }}
 
   <section class="container mx-auto px-4 py-10">
     <h1 class="page-title text-3xl py-12">{{ .Title }}</h1>
