@@ -63,7 +63,7 @@
         {{ range .Site.Menus.footer }}
           {{ $raw := .URL }}
           {{ $isExt := or (hasPrefix $raw "http://") (hasPrefix $raw "https://") }}
-          <a href="{{ if $isExt }}{{ $raw | safeURL }}{{ else }}{{ $raw | relLangURL }}{{ end }}"
+          <a href="{{ if $isExt }}{{ $raw | safeURL }}{{ else }}{{ $raw | relURL }}{{ end }}"
             class="block mt-4 lg:inline-block lg:mt-0 text-gray-300 hover:text-white mr-8"
             {{ if $isExt }}target="_blank" rel="noopener"{{ end }}>
             {{ if not .Pre }}

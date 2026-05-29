@@ -1,26 +1,64 @@
 {{ define "main" }}
-  {{ $items := index .Site.Data "research" "projects" .Lang }}
-  {{ $fundings := index .Site.Data "research" "fundings" .Lang }}
+  {{ $fundings := .Site.Data.research.fundings }}
+  {{ $items := .Site.Data.research.projects }}
 
-  
+
   <section class="container mx-auto px-4 py-10">
-    <h2 class="page-title text-3xl py-12"> {{ i18n "self_developed_projects"}}</h2>
+    <!-- Fundings -->
+    <h2 class="section-title py-12">Funded Projects</h2>
+
+    <div class="data-table-wrap">
+      <table class="data-table" style="font-size:18px; line-height:1.65;">
+        <colgroup>
+          <col style="width:56px">
+          <col style="width:280px">
+          <col style="width:120px">
+          <col style="width:120px">
+          <col style="width:140px">
+        </colgroup>
+
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>Project Title</th>
+            <th>Funding Source</th>
+            <th>Funding Amount</th>
+            <th>Project Duration</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {{ range $i, $f := $fundings }}
+            <tr>
+              <td>{{ add $i 1 }}</td>
+              <td>{{ $f.title }}</td>
+              <td>{{ $f.sponsor }}</td>
+              <td>{{ $f.amount | default "-" }}</td>
+              <td>{{ $f.duration }}</td>
+            </tr>
+          {{ end }}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Self-developed -->
+    <h2 class="page-title text-3xl py-12">In-House Projects</h2>
 
     <div class="data-table-wrap text-[#1E2939]">
       <table class="data-table" style="font-size:18px; line-height:1.65;">
         <colgroup>
-          <col style="width:72px">
-          <col style="width:300px"> 
+          <col style="width:56px">
+          <col style="width:280px">
           <col style="width:240px">
-          <col style="width:120px">
+          <col style="width:140px">
 
         </colgroup>
         <thead>
           <tr>
-            <th>{{ i18n "num" }}</th>
-            <th>{{ i18n "name" }}</th>
-            <th>{{ i18n "members" }}</th>
-            <th>{{ i18n "period_1" }}</th>
+            <th>No.</th>
+            <th>Project Title</th>
+            <th>Members</th>
+            <th>Project Duration</th>
           </tr>
         </thead>
 
@@ -31,42 +69,6 @@
               <td>{{ $p.name }}</td>
               <td>{{ $p.members }}</td>
               <td>{{ $p.period }}</td>
-            </tr>
-          {{ end }}
-        </tbody>
-      </table>
-    </div>
-
-    <!-- Fundings -->
-    <h2 class="section-title py-12">
-      {{ i18n "fundings"}}
-    </h2>
-
-    <div class="data-table-wrap">
-      <table class="data-table" style="font-size:18px; line-height:1.65;">
-        <colgroup>
-          <col style="width:72px">
-          <col style="width:300px"> 
-          <col style="width:240px">
-          <col style="width:120px">
-        </colgroup>
-
-        <thead>
-          <tr>
-            <th>{{ i18n "num" }}</th>
-            <th>{{ i18n "name" }}</th>
-            <th>{{ i18n "source" }}</th>
-            <th>{{ i18n "period_2" }}</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {{ range $i, $f := $fundings }}
-            <tr>
-              <td>{{ add $i 1 }}</td>
-              <td>{{ $f.name }}</td>
-              <td>{{ $f.source }}</td>
-              <td>{{ $f.period }}</td>
             </tr>
           {{ end }}
         </tbody>

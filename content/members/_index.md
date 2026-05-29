@@ -1,7 +1,6 @@
 ---
-title: "成员"
+title: "Members"
 type: "members"
 hideTitle: true
 description: "People in ZeroGen Lab"
 ---
-
