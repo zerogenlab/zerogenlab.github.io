@@ -1,9 +1,6 @@
 {{ define "main" }}
 <div class="w-full mx-auto container px-4 py-10">
-  {{ $lang := .Site.Language.Lang }}
-  {{ $members := (index site.Data.members $lang) | default site.Data.members.zh }}
-
-  {{ range $members.sections }}
+  {{ range site.Data.members.sections }}
     {{ partial "members/section.html" . }}
   {{ end }}
 </div>

@@ -1,10 +1,7 @@
 <div class="swiper-container sm:h-400px <sm:h-300px lg:h-[clamp(360px,40vh,520px)]">
   <div class="swiper-wrapper">
 
-    {{ $lang := .Site.Language.Lang }}
-    {{ $slides := (index .Site.Data.slide $lang) | default .Site.Data.slide.zh }}
-
-    {{ range $slides }}
+    {{ range .Site.Data.slide }}
       <div class="swiper-slide">
         <img src="{{ printf "/%s" .image | relURL }}" alt="{{ .title }}" class="w-full h-full object-cover">
         <div class="s-fade-txt">

@@ -23,11 +23,6 @@
     gap: clamp(8px, 2vw, 32px);
   }
 
-  /* 小地球图标 */
-  .lang-icon {
-    transform: scale(1.15);  
-    display: inline-block;    
-  }
 </style>
 
   <nav class="bg-opacity-100 px-6 py-6 mx-auto nav-enter nav-top">
@@ -35,7 +30,7 @@
 
       <!-- 左：Logo + 实验室名 -->
       <div class="flex items-center h-full of-hidden">
-        <a href="{{"/" | relLangURL}}" class="flex items-center h-full gap-3">
+        <a href="{{"/" | relURL}}" class="flex items-center h-full gap-3">
           <img
             alt="ZeroGen Lab"
             class="nav-logo"
@@ -70,7 +65,7 @@
                       {{ if $isExt }}
                         {{ $href = $raw | safeURL }}
                       {{ else }}
-                        {{ $href = $raw | relLangURL }}
+                        {{ $href = $raw | relURL }}
                       {{ end }}
                     {{ end }}
 
@@ -95,7 +90,7 @@
                 {{ if $isExt }}
                   {{ $href = $raw | safeURL }}
                 {{ else }}
-                  {{ $href = $raw | relLangURL }}
+                  {{ $href = $raw | relURL }}
                 {{ end }}
               {{ end }}
 
@@ -104,49 +99,6 @@
                 class="nav-item hover:opacity-60 transition-opacity duration-200">
                 {{ .Name }}
             </a>
-
-            {{/* 语言切换 */}}
-            {{ if eq .Identifier "about" }}
-              <div class="relative inline-block ml-2 group lang-switch">
-                <button
-                  type="button"
-                  class="inline-flex items-center justify-center
-                         h-9 w-9 rounded-lg cursor-pointer
-                         text-black/70 hover:text-black hover:bg-black/5
-                         transition"
-                  aria-label="Language switcher"
-                >
-                  <i class="fas fa-globe lang-icon"></i>
-                </button>
-
-                <div
-                  class="absolute right-0 mt-0 w-24 z-50 lang-dropdown
-                         bg-white ring-1 ring-black/10 shadow-lg
-                         opacity-0 translate-y-1 pointer-events-none
-                         transition duration-150
-                         group-hover:opacity-100
-                         group-hover:translate-y-0
-                         group-hover:pointer-events-auto"
-                >
-                  {{ if $.IsTranslated }}
-                    {{ range $.AllTranslations }}
-                      <a href="{{ .RelPermalink }}"
-                         class="block px-3 py-2 text-sm text-black/80 hover:bg-black/5">
-                        {{ .Language.LanguageName }}
-                      </a>
-                    {{ end }}
-                  {{ else }}
-                    {{/* 没翻译就跳到各语言首页 */}}
-                    {{ range $.Site.Home.AllTranslations }}
-                      <a href="{{ .RelPermalink }}"
-                        class="block px-3 py-2 text-sm text-black/80 hover:bg-black/5">
-                        {{ .Language.LanguageName }}
-                      </a>
-                    {{ end }}
-                  {{ end }}
-                </div>
-              </div>
-            {{ end }}
 
           {{ end }}
 
@@ -161,7 +113,7 @@
             type="search"
             placeholder="Search…"
             class="search-input"
-            data-index-url="{{ "search.json" | relLangURL }}">
+            data-index-url="{{ "search.json" | relURL }}">
         </div>
 
         <!-- 搜索结果容器 -->
