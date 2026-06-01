@@ -5,4 +5,10 @@ draft: false
 cascade:
   params:
     searchExclude: true
+
+summaryDescription: "This team building has promoted the relationships among members within the group."
+
+summaryImages:
+  - "/img/news/travel.png"
+  - "/img/news/picture2.jpg"
 ---

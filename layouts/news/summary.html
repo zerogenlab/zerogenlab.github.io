@@ -4,13 +4,46 @@
       {{ .Date.Format "02" }}
     </div>
     <div class="text-xs text-black/50 mt-1">
-      {{ .Date.Format "2025-09" }}
+      {{ .Date.Format "2006-01" }}
     </div>
   </div>
 
-  <div class="min-w-0">
-    <div class="text-lg md:text-3xl font-700 leading-7 text-black/70">
+  <div class="min-w-0 flex-1">
+    <div class="text-lg md:text-3xl font-400 leading-normal text-black/70">
       {{ .Title }}
     </div>
+
+    {{ with .Params.summaryDescription }}
+      <div class="mt-3 text-sm md:text-base leading-relaxed text-black/55">
+        {{ . | markdownify }}
+      </div>
+    {{ end }}
+
+    {{ with .Params.summaryImages }}
+      {{ $images := first 2 . }}
+      {{ if eq (len $images) 1 }}
+        <div class="mt-4 flex justify-center">
+          {{ range $images }}
+            <img
+              src="{{ . | relURL }}"
+              alt="{{ $.Title }}"
+              class="w-full max-w-xl max-h-64 object-contain"
+              loading="lazy"
+            >
+          {{ end }}
+        </div>
+      {{ else }}
+        <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {{ range $images }}
+            <img
+              src="{{ . | relURL }}"
+              alt="{{ $.Title }}"
+              class="w-full max-h-64 object-contain"
+              loading="lazy"
+            >
+          {{ end }}
+        </div>
+      {{ end }}
+    {{ end }}
   </div>
 </div>
