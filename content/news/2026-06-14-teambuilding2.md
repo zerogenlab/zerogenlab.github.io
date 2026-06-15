@@ -10,5 +10,4 @@ summaryDescription: "With the warm breezes of early summer and lush greenery all
 
 summaryImages:
   - "/img/news/happyvalley1.jpg"
-  - "/img/news/happyvalley2.jpg"
 ---
