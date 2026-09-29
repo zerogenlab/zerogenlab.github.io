@@ -11,12 +11,18 @@
 
   <!-- Avatar -->
   <div class="member-avatar w-32 h-32 rounded-full overflow-hidden ring-1 ring-black/8 shadow-sm">
+    {{ if .photo }}
     <img
       src="{{ .photo }}"
       alt="{{ .name }}"
       class="w-full h-full object-cover [object-position:50%_20%]"
       loading="lazy"
     />
+    {{ else }}
+      <div class="w-full h-full flex items-center justify-center text-[24px] text-[#1E2939]/60" aria-hidden="true">
+        {{ range split .name " " }}{{ substr . 0 1 }}{{ end }}
+      </div>
+    {{ end }}
   </div>
 
   <!-- Name -->
@@ -32,11 +38,9 @@
   </div>
 
   <!-- desc / grade -->
-  {{ with .desc }}
-    <div class="mt-3 text-[16px] text-[#1E2939]/60 leading-relaxed">
-      {{ . }}
+    <div class="mt-3 text-[16px] text-[#1E2939]/60 leading-relaxed" style="min-height: 1.5em;">
+      {{ .desc }}
     </div>
-  {{ end }}
 
   {{ with .grade }}
     <div class="mt-6 text-[15px] text-[#1E2939]/70 leading-relaxed max-w-[28ch]">

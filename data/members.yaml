@@ -2,7 +2,7 @@ sections:
   - title: Advisor
     people:
       - name: Renjun Hu
-        photo: /img/members/advisor.jpeg
+        photo: /img/members/advisor.jpg
         desc: Generative and Agentic AI
         grade: Young Researcher
         github: https://github.com/hurenjun
@@ -14,6 +14,10 @@ sections:
       - name: Ruwei Zhang
         photo: /img/members/phd1.jpg
         desc: GUI Automated Testing
+        grade: Grade 2026
+      - name: Jiawen Gu
+        photo: /img/members/phd2.jpg
+        desc: Trustworthy Self-Evolving Agent
         grade: Grade 2026
 # 硕士生
   - title: Master Students
@@ -27,7 +31,7 @@ sections:
         desc: Generative Sequential Modeling
         grade: Grade 2025
       - name: Jinglei Xu
-        photo: /img/members/master3.jpeg
+        photo: /img/members/master3.jpg
         desc: LLM Reasoning
         grade: Grade 2025
       - name: Yansong Chen
@@ -35,22 +39,39 @@ sections:
         desc: VLM Evaluation and Enhancement
         grade: Grade 2025
 
+      - name: Fang Li
+        photo: /img/members/master5.jpg
+        desc: Reasoning Chain in Context Engineering
+        grade: Grade 2026
+      - name: Yan Yan 
+        photo: /img/members/master6.jpg
+        desc: Efficient Context Reasoning 
+        grade: Grade 2026
+      - name: Xin Shen
+        photo: /img/members/master7.jpg
+        desc: Societal Impacts and Governance of AI
+        grade: Grade 2026
+      - name: Bin Yuan
+        photo: /img/members/master8.jpg
+        desc: Multimodal Agentic Reasoning
+        grade: Grade 2026
+
 # 本科生
   - title: Undergraduate Students
     people:
-      - name: Fang Li
-        photo: /img/members/ug1.jpg
-        desc: Reasoning Chain in Context Engineering
-        grade: Grade 2022
-      - name: Yan Yan 
-        photo: /img/members/ug2.jpg
-        desc: Efficient Context Reasoning 
-        grade: Grade 2022
       - name: Kaicheng Zhang
-        photo: /img/members/ug3.jpg
+        photo: /img/members/ug1.jpg?v=64412806
         desc: LLM Comprehension and Evaluation
         grade: Grade 2023
       - name: Jia Sun
-        photo: /img/members/ug4.png
+        photo: /img/members/ug2.jpg?v=8c5408d3
         desc: LLM Reasoning
         grade: Grade 2023
+      - name: Chang Wang
+        photo: /img/members/ug3.jpg?v=9ba03832
+        desc: Knowledge Graphs for Healthcare
+        grade: Grade 2025
+      - name: Yangrui Gu
+        photo: /img/members/ug4.jpg?v=1ed076ca
+        desc: Embodied Intelligence
+        grade: Grade 2025
