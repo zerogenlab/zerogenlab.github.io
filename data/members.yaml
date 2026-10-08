@@ -55,6 +55,10 @@ sections:
         photo: /img/members/master8.jpg
         desc: Multimodal Agentic Reasoning
         grade: Grade 2026
+      - name: Tianyun Wu
+        photo: /img/members/master9.jpg
+        desc: 
+        grade: Grade 2027
 
 # 本科生
   - title: Undergraduate Students
